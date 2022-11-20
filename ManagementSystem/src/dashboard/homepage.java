@@ -3,6 +3,8 @@ package dashboard;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,14 +17,25 @@ public class homepage extends javax.swing.JFrame {
 static SimpleDateFormat timeformat;
 static Calendar cal;
 static String times;
+int height=0, width=0;
     public homepage() {
         initComponents();
         
        
         time();
         icons();
-        
+         screenSize();
     }
+    
+    public void screenSize(){
+       Toolkit tk = Toolkit.getDefaultToolkit();
+         width = (int)tk.getScreenSize().getWidth();
+         height = (int)tk.getScreenSize().getHeight();
+        Insets task = Toolkit.getDefaultToolkit().getScreenInsets(getGraphicsConfiguration());
+        int h  = task.bottom;
+        setSize(width,height-h);
+}
+    
 public void icons(){
   
     left.setIcon(setSize(new ImageIcon(getClass().getResource("/images/left.png")),61,58));
@@ -63,9 +76,6 @@ public static ImageIcon setSize(ImageIcon icon, int width, int height){
         history = new javax.swing.JToggleButton();
         settings = new javax.swing.JToggleButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        BrgyOfficials = new javax.swing.JPanel();
-        officialsview = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         Dashboard = new javax.swing.JPanel();
         unsettledcount = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -127,12 +137,15 @@ public static ImageIcon setSize(ImageIcon icon, int width, int height){
         titlemission = new javax.swing.JLabel();
         right = new javax.swing.JLabel();
         left = new javax.swing.JLabel();
+        BrgyOfficials = new javax.swing.JPanel();
+        officialsview = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
         dd = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 87, 138));
@@ -277,18 +290,6 @@ public static ImageIcon setSize(ImageIcon icon, int width, int height){
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BrgyOfficials.setBackground(new java.awt.Color(255, 255, 255));
-        BrgyOfficials.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        officialsview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        BrgyOfficials.add(officialsview, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 371, 512));
-
-        jLabel17.setFont(new java.awt.Font("Novecento Bold", 0, 42)); // NOI18N
-        jLabel17.setText("BARANGAY OFFICIALS");
-        BrgyOfficials.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 470, 50));
-
-        jLayeredPane1.add(BrgyOfficials, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, 740));
 
         Dashboard.setBackground(new java.awt.Color(255, 255, 255));
         Dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -616,6 +617,18 @@ public static ImageIcon setSize(ImageIcon icon, int width, int height){
 
         jLayeredPane1.add(BrgyInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, -1));
 
+        BrgyOfficials.setBackground(new java.awt.Color(255, 255, 255));
+        BrgyOfficials.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        officialsview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        BrgyOfficials.add(officialsview, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 371, 512));
+
+        jLabel17.setFont(new java.awt.Font("Novecento Bold", 0, 42)); // NOI18N
+        jLabel17.setText("BARANGAY OFFICIALS");
+        BrgyOfficials.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 470, 50));
+
+        jLayeredPane1.add(BrgyOfficials, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, 740));
+
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 1650, 740));
 
         time.setFont(new java.awt.Font("Novecento Book", 0, 18)); // NOI18N
@@ -624,20 +637,7 @@ public static ImageIcon setSize(ImageIcon icon, int width, int height){
         dd.setFont(new java.awt.Font("Novecento Book", 0, 18)); // NOI18N
         jPanel1.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 340, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1929, 808));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
